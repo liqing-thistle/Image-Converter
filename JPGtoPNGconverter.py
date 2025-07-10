@@ -8,22 +8,22 @@ PNG_folder = sys.argv[2]
 print(JPG_folder, PNG_folder)
 
 # Check if 'PNG_folder' exists. If not,  create it.
-isExist = os.path.exists('PNG_folder')
+isExist = os.path.exists(PNG_folder)
 if isExist is False:
-    print('PNG_folder folder does not exist')
-    os.makedirs('PNG_folder')
-    print('Directory PNG_folder created')
+    print(f'{PNG_folder} does not exist')
+    os.makedirs(PNG_folder)
+    print(f'Directory {PNG_folder} created')
 else:
-    print('PNG_folder folder does exist')
+    print(f'{PNG_folder } does exist')
 
 # Create a list including all .jpg files.
 jpg_images = os.listdir(JPG_folder)
 
 # Iterate over all .jpg files, convert them to .png files and store them in 'PNG_folder'.
 for image_name in jpg_images:
-    img = Image.open(f'{JPG_folder}{image_name}')
+    img = Image.open(f'{JPG_folder}/{image_name}')
     clean_name = os.path.splitext(image_name)[0]   # get the image name without the extension (.jpg)
-    img.save(f'{PNG_folder}{clean_name}.png')
+    img.save(f'{PNG_folder}/{clean_name}.png')
 print('All done!')
 
 
